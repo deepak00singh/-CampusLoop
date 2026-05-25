@@ -11,6 +11,15 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+// MongoDB Connect
+mongoose.connect(process.env.MONGODB_URI)
+    .then(() => {
+        console.log('MongoDB Connected! ✅');
+    })
+    .catch((err) => {
+        console.log('MongoDB Error:', err);
+    });
+
 // Test route
 app.get('/', (req, res) => {
     res.json({ message: 'CampusLoop Backend Running! 🚀' });

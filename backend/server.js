@@ -23,6 +23,12 @@ mongoose.connect(process.env.MONGODB_URI)
 const authRoutes = require('./routes/auth');
 app.use('/api/auth', authRoutes);
 
+const itemRoutes = require('./routes/items');
+app.use('/api/items', itemRoutes);
+
+const rentRequestRoutes = require('./routes/rentRequests');
+app.use('/api/rent', rentRequestRoutes);
+
 // Test route
 app.get('/', (req, res) => {
     res.json({ message: 'CampusLoop Backend Running! 🚀' });

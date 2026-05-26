@@ -11,14 +11,30 @@ const itemSchema = new mongoose.Schema({
         required: true,
         trim: true
     },
-    pricePerDay: {
-        type: Number,
-        required: true
-    },
     category: {
         type: String,
         required: true,
         enum: ['Books', 'Electronics', 'Clothing', 'Sports', 'Other']
+    },
+    listingType: {
+        type: String,
+        required: true,
+        enum: ['rent', 'sell', 'barter']
+    },
+    // Rent ke liye
+    pricePerDay: {
+        type: Number,
+        default: 0
+    },
+    // Sell ke liye
+    sellPrice: {
+        type: Number,
+        default: 0
+    },
+    // Barter ke liye
+    barterWant: {
+        type: String,
+        default: ''
     },
     images: [{
         type: String

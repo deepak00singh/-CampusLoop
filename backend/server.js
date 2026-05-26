@@ -29,6 +29,9 @@ app.use('/api/items', itemRoutes);
 const rentRequestRoutes = require('./routes/rentRequests');
 app.use('/api/rent', rentRequestRoutes);
 
+const requestRoutes = require('./routes/requests');
+app.use('/api/requests', requestRoutes);
+
 // Test route
 app.get('/', (req, res) => {
     res.json({ message: 'CampusLoop Backend Running! 🚀' });

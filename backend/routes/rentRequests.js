@@ -12,7 +12,7 @@ router.post('/send', authMiddleware, async (req, res) => {
         const item = await Item.findById(itemId);
         if (!item) return res.status(404).json({ message: 'Item not found' });
         if (!item.isAvailable) return res.status(400).json({ message: 'Item not available' });
-        if (item.owner.toString() === req.userId) return res.status(400).json({ message: 'Apna item rent nahi le sakte!' });
+        if (item.owner.toString() === req.userId) return res.status(400).json({ message: 'You cannot rent your own item!' });
 
         const request = new RentRequest({
             item: itemId,

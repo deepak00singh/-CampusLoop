@@ -45,7 +45,7 @@ router.post('/respond/:id', authMiddleware, async (req, res) => {
         const request = await Request.findById(req.params.id);
         if (!request) return res.status(404).json({ message: 'Request not found' });
         if (request.requestedBy.toString() === req.userId) {
-            return res.status(400).json({ message: 'Apni request pe respond nahi kar sakte!' });
+            return res.status(400).json({ message: 'You cannot respond to your own request!' });
         }
 
         request.responses.push({
